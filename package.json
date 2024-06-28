@@ -1,0 +1,64 @@
+{
+  "name": "brazilian-doc-gen",
+  "displayName": "Brazilian Doc Gen",
+  "description": "Extension to generate valid Brazilian Docs",
+  "version": "1.0.0",
+  "icon": "images/icon.jpg",
+  "engines": {
+    "vscode": "^1.55.0"
+  },
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "publisher": "andrelsmelo",
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install"
+  },
+  "devDependencies": {
+    "@types/node": "^12.20.55",
+    "@types/vscode": "^1.55.0",
+    "typescript": "^4.0.0",
+    "vscode": "^1.1.37"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andrelsmelo/brazilian-doc-gen-ext"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.generateCPF",
+        "title": "Generate CPF"
+      },
+      {
+        "command": "extension.generateCNPJ",
+        "title": "Generate CNPJ"
+      },
+      {
+        "command": "extension.showCommands",
+        "title": "Show CPF/CNPJ Commands"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "extension.showCommands",
+        "key": "ctrl+shift+j",
+        "when": "editorTextFocus"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "extension.generateCPF",
+          "when": "editorTextFocus"
+        },
+        {
+          "command": "extension.generateCNPJ",
+          "when": "editorTextFocus"
+        }
+      ]
+    }
+  }
+}
